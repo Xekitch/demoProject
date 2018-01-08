@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Thymeleaf Hello World Example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Edit footballer</h1>
+<div class="editForm">
+<form action="#" th:action="@{/editFootballer}" th:object="${editable}" method="post">
+    <div><input th:field="*{id}" type="hidden"/></div>
+    <div><label>First name:
+    <input type="text" th:field="*{firstName}"/>
+    </label></div><br/>
+    <div><label>Last name:
+    <input type="text" th:field="*{lastName}"/>
+    </label></div><br/>
+    <div><label>Date of birth:
+        <input type="date" th:value="*{dateOfBirth}" th:field="*{dateOfBirth}"/>
+    </label></div><br/>
+    <div><label>Team:
+    <select th:field="*{team.id}">
+        <option th:each="team : ${teams}" th:value="${team.id}" th:text="${team.name}"></option>
+    </select>
+    </label></div><br/>
+    <input type="submit" value="Submit"/>
+</form>
+</div>
+</body>
+</html>
